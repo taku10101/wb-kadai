@@ -321,7 +321,7 @@ export default function Component() {
                 </div>
                 <div className='relative h-[250px] rounded-lg overflow-hidden'>
                   <Image
-                    src='/placeholder.svg?height=250&width=400'
+                    src='/8.jpg?height=250&width=400'
                     alt='ハル幼稚園の受付'
                     layout='fill'
                     objectFit='cover'
