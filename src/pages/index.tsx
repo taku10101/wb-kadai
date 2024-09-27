@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { Bell, Book, Calendar, Home, Info, Palette, Sun } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,7 +57,7 @@ export default function Component() {
         <section id='hero' className='mb-12'>
           <div className='relative w-full h-[500px] rounded-lg overflow-hidden shadow-lg'>
             <Image
-              src='/placeholder.svg?height=500&width=1000'
+              src='/1.jpg?height=500&width=1000'
               alt='新園舎の全景'
               layout='fill'
               objectFit='cover'
@@ -98,49 +99,21 @@ export default function Component() {
               <CardContent className='pt-6'>
                 <ul className='space-y-4'>
                   <li className='flex items-center'>
-                    <Image
-                      src='/placeholder.svg?height=60&width=60'
-                      alt='イベントアイコン'
-                      width={60}
-                      height={60}
-                      className='rounded-full mr-4'
-                    />
                     <span className='text-orange-700'>
                       20XX-07-07 入園説明会～八尾プリズムホール～
                     </span>
                   </li>
                   <li className='flex items-center'>
-                    <Image
-                      src='/placeholder.svg?height=60&width=60'
-                      alt='イベントアイコン'
-                      width={60}
-                      height={60}
-                      className='rounded-full mr-4'
-                    />
                     <span className='text-orange-700'>
                       20XX-07-01 親子との教室参加者募集
                     </span>
                   </li>
                   <li className='flex items-center'>
-                    <Image
-                      src='/placeholder.svg?height=60&width=60'
-                      alt='イベントアイコン'
-                      width={60}
-                      height={60}
-                      className='rounded-full mr-4'
-                    />
                     <span className='text-orange-700'>
                       20XX-06-25 親と子の絵画教室 参加者募集
                     </span>
                   </li>
                   <li className='flex items-center'>
-                    <Image
-                      src='/placeholder.svg?height=60&width=60'
-                      alt='イベントアイコン'
-                      width={60}
-                      height={60}
-                      className='rounded-full mr-4'
-                    />
                     <span className='text-orange-700'>
                       20XX-06-05 幼年消防クラブ 発会式
                     </span>
@@ -155,7 +128,7 @@ export default function Component() {
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                   <div className='relative h-[250px] rounded-lg overflow-hidden'>
                     <Image
-                      src='/placeholder.svg?height=250&width=400'
+                      src='/15.jpg?height=250&width=400'
                       alt='今日の幼稚園の様子1'
                       layout='fill'
                       objectFit='cover'
@@ -163,7 +136,7 @@ export default function Component() {
                   </div>
                   <div className='relative h-[250px] rounded-lg overflow-hidden'>
                     <Image
-                      src='/placeholder.svg?height=250&width=400'
+                      src='/11.jpg?height=250&width=400'
                       alt='今日の幼稚園の様子2'
                       layout='fill'
                       objectFit='cover'
@@ -182,7 +155,7 @@ export default function Component() {
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-6'>
                   <div className='relative h-[200px] rounded-lg overflow-hidden'>
                     <Image
-                      src='/placeholder.svg?height=200&width=300'
+                      src='/17.jpg?height=200&width=300'
                       alt='朝の会の様子'
                       layout='fill'
                       objectFit='cover'
@@ -193,7 +166,7 @@ export default function Component() {
                   </div>
                   <div className='relative h-[200px] rounded-lg overflow-hidden'>
                     <Image
-                      src='/placeholder.svg?height=200&width=300'
+                      src='/10.jpg?height=200&width=300'
                       alt='お昼ごはんの様子'
                       layout='fill'
                       objectFit='cover'
@@ -204,7 +177,7 @@ export default function Component() {
                   </div>
                   <div className='relative h-[200px] rounded-lg overflow-hidden'>
                     <Image
-                      src='/placeholder.svg?height=200&width=300'
+                      src='/16.jpg?height=200&width=300'
                       alt='お帰りの会の様子'
                       layout='fill'
                       objectFit='cover'
@@ -230,7 +203,7 @@ export default function Component() {
                       className='relative h-[150px] rounded-lg overflow-hidden'
                     >
                       <Image
-                        src={`/placeholder.svg?height=150&width=200&text=作品${i}`}
+                        src={`/${i}.jpg?height=150&width=200&text=作品${i}`}
                         alt={`子供の作品${i}`}
                         layout='fill'
                         objectFit='cover'
@@ -262,7 +235,7 @@ export default function Component() {
                   </div>
                   <div className='relative h-[200px] rounded-lg overflow-hidden mt-4'>
                     <Image
-                      src='/placeholder.svg?height=200&width=400'
+                      src='/24.jpg?height=200&width=400'
                       alt='SIあそびの様子'
                       layout='fill'
                       objectFit='cover'
@@ -286,7 +259,7 @@ export default function Component() {
                   </div>
                   <div className='relative h-[200px] rounded-lg overflow-hidden mt-4'>
                     <Image
-                      src='/placeholder.svg?height=200&width=400'
+                      src='/23.jpg?height=200&width=400'
                       alt='特別講師による指導の様子'
                       layout='fill'
                       objectFit='cover'
@@ -316,7 +289,7 @@ export default function Component() {
                 </div>
                 <div className='relative h-[300px] rounded-lg overflow-hidden'>
                   <Image
-                    src='/placeholder.svg?height=300&width=500'
+                    src='/11.jpg?height=300&width=500'
                     alt='ハル幼稚園の外観'
                     layout='fill'
                     objectFit='cover'
