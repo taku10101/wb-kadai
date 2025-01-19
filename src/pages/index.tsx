@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Carousel, CarouselSlide } from "@yamada-ui/carousel";
+import { Center } from "@yamada-ui/react";
 export default function Component() {
   const [activeField, setActiveField] = useState("game");
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,17 +15,17 @@ export default function Component() {
     {
       title: "ゲームから未来まで",
       content: "本気になった人間を世界はほっとかない。",
-      image: "/placeholder.svg",
+      image: "/02_slider/carousel_general_HAL_pc_2024_1024.jpg",
     },
     {
       title: "クリエイティブな未来へ",
       content: "想像力を現実に変える力を身につけよう。",
-      image: "/placeholder.svg",
+      image: "/02_slider/img_naiteisokuhou_2024_NH__1.jpg",
     },
     {
       title: "テクノロジーの最前線",
       content: "最新技術で、新しい世界を創造しよう。",
-      image: "/placeholder.svg",
+      image: "/02_slider/PC.jpg",
     },
   ];
 
@@ -36,52 +38,58 @@ export default function Component() {
   }, [slides.length]);
 
   const fields: { id: string; name: string }[] = [
-    { id: "game", name: "ゲームの野" },
+    { id: "game", name: "ゲーム分野" },
     { id: "cg", name: "CG・映像分野" },
     { id: "music", name: "音声分野" },
     { id: "design", name: "カーデザイン分野" },
     { id: "it", name: "IT・WEB・AI分野" },
   ];
 
-  const fieldContent: Record<string, { title: string; description: string }> = {
+  const fieldContent: Record<string, { title: string; description: string, image:string[] }> = {
     game: {
       title: "ゲーム開発コース",
       description:
         "最新のゲーム開発技術を学び、クリエイティブな作品を生み出すスキルを身につけます。",
+      image:["/08_Courses/01_GAME/areatop_course_game_design.jpg","/08_Courses/01_GAME/areatop_course_game_make.jpg","/08_Courses/01_GAME/areatop_course_game_planning.jpg"]
     },
     cg: {
       title: "CG・映像制作コース",
       description:
         "3DCGや映像編集の技術を習得し、映画やアニメーションの世界で活躍できる人材を育成します。",
+      image:["/08_Courses/02_CG:ANIMATION/areatop_course_anime_illust.jpg","/08_Courses/02_CG:ANIMATION/areatop_course_cg_design.jpg","/08_Courses/02_CG:ANIMATION/areatop_course_cg_movie.jpg","/08_Courses/02_CG:ANIMATION/areatop_course_night_cg.jpg","/08_Courses/02_CG:ANIMATION/areatop_course_night_graphic.png","/08_Courses/02_CG:ANIMATION/areatop_course_twoyear_cg.jpg"]
     },
     music: {
       title: "音楽・サウンド制作コース",
       description:
         "作曲や音響効果の制作技術を学び、様々なメディアで使用される音楽やサウンドを生み出します。",
+        image:["/08_Courses/03_MUSIC/areatop_course_music.jpg", "/08_Courses/03_MUSIC/areatop_course_twoyear_music.jpg"]
     },
     design: {
       title: "カーデザインコース",
       description:
         "自動車業界で求められるデザインスキルと最新のCAD技術を習得し、未来の車を創造します。",
+        image:["/08_Courses/04_CAR DESIGN/areatop_course_car_design.jpg"]
     },
     it: {
       title: "IT・WEB・AI開発コース",
       description:
         "プログラミングやAI技術を学び、最先端のIT産業で活躍できるエンジニアを育成します。",
+        image:["/08_Courses/05_IT:WEB:AI/areatop_course_ai.jpg", "/08_Courses/05_IT:WEB:AI/areatop_course_info_manage.jpg", "/08_Courses/05_IT:WEB:AI/areatop_course_info_process.jpg", "/08_Courses/05_IT:WEB:AI/areatop_course_night_it.jpg", "/08_Courses/05_IT:WEB:AI/areatop_course_night_system.jpg", "/08_Courses/05_IT:WEB:AI/areatop_course_night_web.jpg", "/08_Courses/05_IT:WEB:AI/areatop_course_twoyear_internet.jpg", "/08_Courses/05_IT:WEB:AI/areatop_course_web_dev.png" ]
     },
   };
 
   return (
     <div className='flex min-h-screen flex-col bg-amber-50'>
       {/* Header */}
-      <header className='border-b bg-amber-100/80 backdrop-blur-sm sticky top-0 z-50'>
-        <div className='container flex h-16 items-center justify-between'>
+      <header className='border-b bg-amber-100/80 backdrop-blur-sm sticky top-0 z-50 opacity-80'>
+        <div className='flex h-16 items-center justify-between'>
           <Image
-            src='/placeholder.svg'
+            src='/01_header/header_logo_all.svg'
             alt='HAL College Logo'
-            width={120}
-            height={40}
+            height={50}
+            width={150}
             className='dark:invert'
+            style={{margin:"0 20px"}}
           />
           <nav className='flex gap-2'>
             {["English", "简体中文", "繁體中文", "한국어", "Tiếng Việt"].map(
@@ -103,7 +111,7 @@ export default function Component() {
       {/* Main Content */}
       <main className='flex-grow'>
         {/* Hero Section with Slideshow */}
-        <section className='relative overflow-hidden bg-gradient-to-b from-amber-200 to-amber-100 h-[600px]'>
+        <section className='relative overflow-hidden bg-gradient-to-b from-amber-200 to-amber-100 h-[1000px]'>
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -112,12 +120,12 @@ export default function Component() {
               }`}
             >
               <div className='absolute inset-0 bg-black opacity-50 z-10'></div>
-              <Image
-                src={slide.image}
-                alt={`Slide ${index + 1}`}
-                fill
-                className='object-cover'
-              />
+                <Image
+                  src={slide.image}
+                  alt={`Slide ${index + 1}`}
+                  fill
+                  className='object-cover mask-image-gradient'
+                />
               <div className='relative z-20 h-full flex items-center justify-center'>
                 <div className='text-center space-y-6 max-w-2xl mx-auto px-4'>
                   <h1 className='text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white'>
@@ -126,6 +134,7 @@ export default function Component() {
                   <p className='text-xl text-amber-100 max-w-[600px] mx-auto'>
                     {slide.content}
                   </p>
+									<Link href={"#campus"}>
                   <Button
                     size='lg'
                     className='rounded-full bg-amber-600 text-white hover:bg-amber-700'
@@ -133,14 +142,15 @@ export default function Component() {
                     希望する学校を選択しよう
                     <ChevronRight className='ml-2 h-4 w-4' />
                   </Button>
-                </div>
+									</Link>
+		            </div>
               </div>
             </div>
           ))}
         </section>
 
         {/* Campus Selection */}
-        <section className='py-24 bg-amber-100 '>
+        <section id="campus" className='py-24 bg-amber-100 '>
           <div className='container m-auto'>
             <h2 className='text-3xl font-bold text-center mb-12 text-amber-900'>
               キャンパス選択
@@ -152,24 +162,32 @@ export default function Component() {
                   station: "新宿(西口)駅前",
                   time: "徒歩3分",
                   details: "地上10階 総合校舎3つのタワー",
+                  image:"/12_others/halTokyo.webp",
+									link:"https://www.hal.ac.jp/tokyo"
                 },
                 {
                   city: "OSAKA",
                   station: "大阪(梅田)駅前",
                   time: "徒歩2分",
                   details: "地上21階 HAL大阪総合校舎",
+                  image:"/12_others/halOsaka.webp",
+									link:"https://www.hal.ac.jp/osaka"
                 },
                 {
                   city: "NAGOYA",
                   station: "名古屋駅前",
                   time: "徒歩3分",
                   details: "地上30階 総合校舎スパイラルタワーズ",
+                  image:"/12_others/halNagoya.webp",
+									link:"https://www.hal.ac.jp/nagoya"
                 },
                 {
                   city: "PARIS",
                   station: "グランブルバール",
                   time: "GIAL-HAL校",
                   details: "HALとGIAL教育提携ならでは！",
+                  image:"/12_others/halParis.webp",
+									link:"https://www.hal.ac.jp/paris"
                 },
               ].map((campus) => (
                 <Card
@@ -180,6 +198,12 @@ export default function Component() {
                     <h3 className='text-2xl font-bold text-amber-800'>
                       {campus.city}
                     </h3>
+                    <Image
+                      src={campus.image}
+                      alt="Out"
+                      width={500}
+                      height={50}
+                      />
                     <div className='space-y-2'>
                       <div className='flex items-center gap-2 text-amber-700'>
                         <MapPin className='w-4 h-4' />
@@ -191,12 +215,16 @@ export default function Component() {
                       </div>
                       <p className='text-sm text-amber-600'>{campus.details}</p>
                     </div>
-                    <Button
-                      className='w-full bg-amber-500 text-white hover:bg-amber-600'
-                      variant='outline'
-                    >
-                      サイトを見る
-                    </Button>
+										
+											<Button
+												className='w-full bg-amber-500 text-white hover:bg-amber-600'
+												variant='outline'
+											>
+												<Link href={campus.link}>
+												サイトを見る
+												</Link>
+											</Button>
+										
                   </CardContent>
                 </Card>
               ))}
@@ -213,13 +241,14 @@ export default function Component() {
               </h2>
               <p className='text-amber-800 text-lg'>
                 ゲーム、CG映像、グラフィック/アニメ、イラスト、ミュージック、カーデザイン、IT、WEB、AI・・・夢の最前線がそのまま
-                教室に凝縮。独自の就職支援システムで希望者就職率は100％
+                教室に凝縮。独自の就職支援システムで希望者就職率は100%
               </p>
             </div>
 
             <div className='space-y-8'>
               <div className='flex flex-wrap justify-center gap-4'>
                 {fields.map((field) => (
+                  
                   <Button
                     key={field.id}
                     onClick={() => setActiveField(field.id)}
@@ -239,6 +268,18 @@ export default function Component() {
                   <h3 className='text-2xl font-semibold text-amber-800 mb-4 text-center'>
                     {fieldContent[activeField].title}
                   </h3>
+                  <Carousel autoplay withControls={false} delay={8000} className="mx-auto my-8 opacity-80">
+                    {fieldContent[activeField].image.map((image, index) => (
+                      <CarouselSlide key={index} as={Center} >
+                        <Image
+                          src={image}
+                          alt='Slide'
+                          width={1080}
+                          height={500} 
+                          />
+                      </CarouselSlide> 
+                    ))}
+                </Carousel>
                   <p className='text-amber-700 text-center'>
                     {fieldContent[activeField].description}
                   </p>
@@ -258,10 +299,16 @@ export default function Component() {
               variant='secondary'
               className='rounded-full text-lg px-8 bg-white text-amber-800 hover:bg-amber-100'
             >
-              無料で送付します
-              <ChevronRight className='ml-2 h-5 w-5' />
+							<Link href={"https://www.hal.ac.jp/request?school=NH"}>
+              	無料で送付します
+							</Link>
             </Button>
           </div>
+        </section>
+
+        {/* AD Section */}
+        <section>
+
         </section>
       </main>
 
@@ -277,7 +324,7 @@ export default function Component() {
                 <ul className='space-y-2'>
                   <li>
                     <Link
-                      href='#'
+                      href='https://www.hal.ac.jp/nagoya/for/company'
                       className='text-sm text-amber-700 hover:text-amber-900 transition-colors'
                     >
                       採用情報
@@ -285,7 +332,7 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
-                      href='#'
+                      href='https://www.hal.ac.jp/nagoya/for/company'
                       className='text-sm text-amber-700 hover:text-amber-900 transition-colors'
                     >
                       企業パートナーシップ
@@ -300,7 +347,7 @@ export default function Component() {
                 <ul className='space-y-2'>
                   <li>
                     <Link
-                      href='#'
+                      href='https://www.hal.ac.jp/nagoya/enter/daytime/flow'
                       className='text-sm text-amber-700 hover:text-amber-900 transition-colors'
                     >
                       入学案内
@@ -308,7 +355,7 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
-                      href='#'
+                      href='https://www.hal.ac.jp/nagoya/apply'
                       className='text-sm text-amber-700 hover:text-amber-900 transition-colors'
                     >
                       オープンキャンパス
@@ -316,7 +363,7 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
-                      href='#'
+                      href='https://www.hal.ac.jp/nagoya/enter/scholarship'
                       className='text-sm text-amber-700 hover:text-amber-900 transition-colors'
                     >
                       奨学金情報
@@ -331,7 +378,7 @@ export default function Component() {
                 <ul className='space-y-2'>
                   <li>
                     <Link
-                      href='#'
+                      href='https://www.hal.ac.jp/tokyo'
                       className='text-sm text-amber-700 hover:text-amber-900 transition-colors'
                     >
                       東京
@@ -339,7 +386,7 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
-                      href='#'
+                      href='https://www.hal.ac.jp/osaka'
                       className='text-sm text-amber-700 hover:text-amber-900 transition-colors'
                     >
                       大阪
@@ -347,7 +394,7 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
-                      href='#'
+                      href='https://www.hal.ac.jp/nagoya'
                       className='text-sm text-amber-700 hover:text-amber-900 transition-colors'
                     >
                       名古屋
@@ -371,38 +418,47 @@ export default function Component() {
                     size='icon'
                     className='w-8 h-8 rounded-full bg-amber-100 hover:bg-amber-300'
                   >
-                    <Facebook className='w-4 h-4 text-amber-900' />
+										<Link href={"http://www.facebook.com/halnagoya"}>
+                    	<Facebook className='w-4 h-4 text-amber-900' />
+										</Link>
                   </Button>
                   <Button
                     variant='outline'
                     size='icon'
                     className='w-8 h-8 rounded-full bg-amber-100 hover:bg-amber-300'
                   >
-                    <Twitter className='w-4 h-4 text-amber-900' />
+										<Link href={"https://x.com/hal_nagoya"}>
+                    	<Twitter className='w-4 h-4 text-amber-900' />
+										</Link>
                   </Button>
                   <Button
                     variant='outline'
                     size='icon'
                     className='w-8 h-8 rounded-full bg-amber-100 hover:bg-amber-300'
                   >
-                    <Instagram className='w-4 h-4 text-amber-900' />
+										<Link href={"https://instagram.com/hal.ac.jp/"}>
+                    	<Instagram className='w-4 h-4 text-amber-900' />
+										</Link>
                   </Button>
                   <Button
                     variant='outline'
                     size='icon'
                     className='w-8 h-8 rounded-full bg-amber-100 hover:bg-amber-300'
                   >
-                    <Linkedin className='w-4 h-4 text-amber-900' />
+										<Link href={"https://www.linkedin.com/"}>
+                    	<Linkedin className='w-4 h-4 text-amber-900' />
+										</Link>
                   </Button>
                 </div>
               </div>
               <div className='space-y-3 col-span-2 md:col-span-3 lg:col-span-1'>
                 <Image
-                  src='/placeholder.svg'
+                  src='/01_header/header_logo_all.svg'
                   alt='HAL College Logo'
-                  width={120}
-                  height={40}
-                  className='mx-auto dark:invert'
+                  height={50}
+                  width={150}
+                  className='object-cover'
+                  style={{margin:"0 20px"}}
                 />
                 <p className='text-sm text-amber-700'>
                   © {new Date().getFullYear()} HAL College. All rights reserved.

@@ -55,7 +55,10 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		maskImage: {
+			'gradient': 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
+		},
   	}
   },
   plugins: [require("tailwindcss-animate")],
